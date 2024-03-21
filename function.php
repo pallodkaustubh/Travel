@@ -9,25 +9,15 @@
 <?php
 function makeconnection()
 {
-    $cn = mysqli_connect("localhost", "root", "", "travel");
-    if (!$cn) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    $password = "your_password_here"; // Replace "your_password_here" with your actual database password
+    $cn=mysqli_connect("localhost","root",$password,"travel");
+    if(mysqli_connect_errno())
+    {
+        echo "failed to connect to mysqli:".mysqli_connect_error();
     }
     return $cn;
 }
-
-// Call the function to establish connection
-$connection = makeconnection();
-
-// Check if connection is successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-} else {
-    echo "Connected successfully";
-}
-
-// Close the connection
-mysqli_close($connection);
+$cn = makeconnection();
 ?>
 </body>
-</html>
+</html> 
